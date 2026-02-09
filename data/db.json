@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "title": "mern stack",
+      "datetime": "2/9/2026, 10:16:31 AM",
+      "body": "MongoDB Express React Node\n",
+      "id": "4edc"
+    },
+    {
+      "title": "python",
+      "datetime": "2/9/2026, 10:15:29 AM",
+      "body": "",
+      "id": "17a0"
+    }
+  ]
+}
