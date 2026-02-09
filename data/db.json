@@ -1,16 +1,16 @@
 {
   "posts": [
     {
-      "title": "mern stack",
-      "datetime": "2/9/2026, 10:16:31 AM",
-      "body": "MongoDB Express React Node\n",
-      "id": "4edc"
+      "title": "Welcome to Postly...",
+      "datetime": "2/9/2026, 2:36:14 PM",
+      "body": "This is your first post 🚀",
+      "id": "1"
     },
     {
-      "title": "python",
-      "datetime": "2/9/2026, 10:15:29 AM",
-      "body": "",
-      "id": "17a0"
+      "id": "602d",
+      "title": "mern stack",
+      "datetime": "2/9/2026, 2:31:30 PM",
+      "body": "code"
     }
   ]
 }
