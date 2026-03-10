@@ -214,7 +214,7 @@ import useWindowSize from "./hooks/useWindowSize";
 function App() {
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

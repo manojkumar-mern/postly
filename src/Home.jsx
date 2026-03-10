@@ -4,26 +4,25 @@ const Home = ({ posts, fetchError, isLoading }) => {
   return (
     <main className="Home">
       {isLoading && (
-        <p
-          className="statusMsg"
-          style={{ color: "#0d6efd", fontSize: "25px" }}
-        >
-          Loading posts !...
+        <p className="statusMsg" style={{ color: "#0d6efd", fontSize: "25px" }}>
+          Loading posts...
         </p>
       )}
 
       {!isLoading && fetchError && (
-        <p className="statusMsg" style={{ color: "red" }}>
+        <p className="statusMsg" style={{ color: "red", fontSize: "20px" }}>
           {fetchError}
         </p>
       )}
 
       {!isLoading &&
         !fetchError &&
-        (posts.length ? (
+        (posts?.length ? (
           <Feed posts={posts} />
         ) : (
-          <p className="statusMsg">No posts to display.</p>
+          <p className="statusMsg" style={{ fontSize: "22px" }}>
+            No posts to display.
+          </p>
         ))}
     </main>
   );
