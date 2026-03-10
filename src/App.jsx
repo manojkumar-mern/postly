@@ -240,7 +240,7 @@ function App() {
         setPosts(safePosts);
         setFetchError(null);
       } catch (err) {
-        setFetchError(err.message);
+        setFetchError("Failed to fetch posts");
         setPosts([]);
       } finally {
         setIsLoading(false);
@@ -349,7 +349,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Home posts={searchResults} fetchError={null} isLoading={false} />
+            <Home posts={searchResults} fetchError={fetchError} isLoading={isLoading} />
           }
         />
 
