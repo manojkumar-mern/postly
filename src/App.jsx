@@ -214,10 +214,11 @@ import useWindowSize from "./hooks/useWindowSize";
 function App() {
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
 
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
@@ -237,8 +238,9 @@ function App() {
         const safePosts = Array.isArray(response.data) ? response.data : [];
 
         setPosts(safePosts);
+        setFetchError(null);
       } catch (err) {
-        console.log(err);
+        setFetchError(err.message);
         setPosts([]);
       } finally {
         setIsLoading(false);
