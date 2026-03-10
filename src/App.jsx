@@ -231,7 +231,7 @@ function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await api.get("");
+        const response = await api.get("/posts");
 
         const safePosts = Array.isArray(response.data) ? response.data : [];
 
