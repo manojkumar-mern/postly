@@ -57,13 +57,15 @@ function App() {
   // }, [data]);
 
   useEffect(() => {
-  const filteredResults = (Array.isArray(posts) ? posts : []).filter(
-    (post) =>
-      post.title.toLowerCase().includes(search.toLowerCase()) ||
-      post.body.toLowerCase().includes(search.toLowerCase())
-  );
+    if (!Array.isArray(posts)) return;
 
-    setSearchResults(filteredResults.reverse());
+    const filteredResults = posts.filter(
+      (post) =>
+        post.title?.toLowerCase().includes(search.toLowerCase()) ||
+        post.body?.toLowerCase().includes(search.toLowerCase()),
+    );
+
+    setSearchResults([...filteredResults].reverse());
   }, [posts, search]);
 
   const handleSubmit = async (e) => {
