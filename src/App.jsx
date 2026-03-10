@@ -27,17 +27,29 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
   const { width } = useWindowSize();
-  const { data, fetchError, isLoading } = useAxiosFetch("/posts");
+  // const { data, fetchError, isLoading } = useAxiosFetch("/posts");
 
   useEffect(() => {
-    if (Array.isArray(data)) {
-      setPosts(data);
-    } else if (data?.data && Array.isArray(data.data)) {
-      setPosts(data.data);
-    } else {
-      setPosts([]);
-    }
-  }, [data]);
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get("/posts");
+        setPosts(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  // useEffect(() => {
+  //   if (Array.isArray(data)) {
+  //     setPosts(data);
+  //   } else if (data?.data && Array.isArray(data.data)) {
+  //     setPosts(data.data);
+  //   } else {
+  //     setPosts([]);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     const filteredResults = posts.filter(
