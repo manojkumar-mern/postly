@@ -27,7 +27,7 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
   const { width } = useWindowSize();
-  const { data, fetchError, isLoading } = useAxiosFetch("/");
+  const { data, fetchError, isLoading } = useAxiosFetch("/posts");
 
   useEffect(() => {
     setPosts(Array.isArray(data) ? data : []);
