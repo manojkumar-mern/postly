@@ -217,6 +217,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
@@ -226,7 +227,7 @@ function App() {
 
   const { width } = useWindowSize();
 
-  /* ---------------- FETCH POSTS ---------------- */
+  // FETCH POSTS
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -239,13 +240,15 @@ function App() {
       } catch (err) {
         console.log(err);
         setPosts([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchPosts();
   }, []);
 
-  /* ---------------- SEARCH FILTER ---------------- */
+  // SEARCH FILTER
 
   useEffect(() => {
     if (!Array.isArray(posts)) return;
@@ -259,7 +262,7 @@ function App() {
     setSearchResults([...filteredResults].reverse());
   }, [posts, search]);
 
-  /* ---------------- CREATE POST ---------------- */
+  // CREATE POST
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -286,7 +289,7 @@ function App() {
     }
   };
 
-  /* ---------------- EDIT POST ---------------- */
+  // EDIT POST
 
   const handleEdit = async (id) => {
     const datetime = new Date().toLocaleString();
@@ -313,7 +316,7 @@ function App() {
     }
   };
 
-  /* ---------------- DELETE POST ---------------- */
+  // DELETE POST
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure?");
