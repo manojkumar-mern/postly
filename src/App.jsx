@@ -30,7 +30,13 @@ function App() {
   const { data, fetchError, isLoading } = useAxiosFetch("/posts");
 
   useEffect(() => {
-    setPosts(Array.isArray(data) ? data : []);
+    if (Array.isArray(data)) {
+      setPosts(data);
+    } else if (data?.data && Array.isArray(data.data)) {
+      setPosts(data.data);
+    } else {
+      setPosts([]);
+    }
   }, [data]);
 
   useEffect(() => {
