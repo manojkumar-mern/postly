@@ -33,11 +33,16 @@ function App() {
     const fetchPosts = async () => {
       try {
         const response = await api.get("/posts");
-        setPosts(response.data);
+
+        const result = Array.isArray(response.data) ? response.data : [];
+
+        setPosts(result);
       } catch (err) {
         console.log(err);
+        setPosts([]);
       }
     };
+
     fetchPosts();
   }, []);
 
@@ -52,7 +57,7 @@ function App() {
   // }, [data]);
 
   useEffect(() => {
-    const filteredResults = posts.filter(
+    const filteredResults = (Array.isArray(posts) ? posts : []).filter(
       (post) =>
         post.title.toLowerCase().includes(search.toLowerCase()) ||
         post.body.toLowerCase().includes(search.toLowerCase()),
